@@ -1,0 +1,33 @@
+______________________________________
+        PHP BLOG - GET READY
+______________________________________
+
+ETAPE 1
+--------------------------------------
+OK - Creation du repo GIT et recuperer-le
+OK - Installation de l'Application
+- Initialisation d'un premier commit
+- Modelisation de la Base 
+- preparation du fichier Install SH
+- Prepater les controlleur, les model et migration, les vues
+- Preparation des données d'exemples
+- Mettre en place les bonne pratique vue en cours
+
+ETAPE 2
+--------------------------------------
+
+
+
+
+
+
+
+
+======================================
+TECH Notes
+--------------------------------------
+Laravel install - Use composer :
+
+- composer global require "laravel/installer" : permet d'initialiser les fichier la processus d'installation pour l'application. Notament, elle initialise la commande 'Laravel new'. A noter que aucune application qui doit empecher la connexion reseau ne doit etre actif, tel que les parfeux des anti-virus
+
+- Laravel new "Nom_de_l_aplication" : permet d'installer le projet Laravel avec tout les dependance. Une autre alternative qui reproduit la meme chose : composer create-project --prefer-dist laravel/Laravel "Nom_du_projet"

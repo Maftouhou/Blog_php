@@ -6,16 +6,36 @@ ETAPE 1
 --------------------------------------
 OK - Creation du repo GIT et recuperer-le
 OK - Installation de l'Application
-- Initialisation d'un premier commit
-- Modelisation de la Base 
-- preparation du fichier Install SH
-- Prepater les controlleur, les model et migration, les vues
-- Preparation des données d'exemples
+OK - Initialisation d'un premier commit
+OK - preparation du fichier Install SH
+OK - Modelisation de la Base *****
+OK - Configurer la base a utiliser sur le fichier .Env 
+
+- Prepater les controlleur, les vues
+- Preparation des données d'exemples et les deployer
 - Mettre en place les bonne pratique vue en cours
+  ° Validation avec le PostRequest
+  ° Gerer les 404
+  ° Utiliser les service provider
 
 ETAPE 2
 --------------------------------------
+OK - Description des tables 
+  1° User (name, email, password, role [Admi, editor])
+  2° Post (title, content, status, published_at, User_id, Category_Id)
+  3° Categorie (title)
+  4° tags (name)
+  5° picture (Post_id, name, uri, size, mime)
+  6° Post_Tag (Tag_id, Post_id)
 
+OK - Modelisation de la base sur MySQL Work bench
+OK - preparer les model et migration.
+  ° php artisan make:model "NomTable" --migration
+
+OK - Ecrire les migration En tenant compte des 
+  ° Liste des methode pour ecrire les migrations : https://laravel.com/docs/5.2/migrations#creating-columns
+  ° 
+OK - Deployer les tables
 
 
 
@@ -31,3 +51,4 @@ Laravel install - Use composer :
 - composer global require "laravel/installer" : permet d'initialiser les fichier la processus d'installation pour l'application. Notament, elle initialise la commande 'Laravel new'. A noter que aucune application qui doit empecher la connexion reseau ne doit etre actif, tel que les parfeux des anti-virus
 
 - Laravel new "Nom_de_l_aplication" : permet d'installer le projet Laravel avec tout les dependance. Une autre alternative qui reproduit la meme chose : composer create-project --prefer-dist laravel/Laravel "Nom_du_projet"
+

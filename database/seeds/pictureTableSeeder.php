@@ -4,6 +4,10 @@ use Illuminate\Database\Seeder;
 
 class pictureTableSeeder extends Seeder
 {
+    public function __construct(Faker\Generator $faker) {
+        $this->faker = $faker;
+    }
+    
     /**
      * Run the database seeds.
      *
@@ -29,8 +33,6 @@ class pictureTableSeeder extends Seeder
             );
             
             $mime = mime_content_type($dirUpload.DIRECTORY_SEPARATOR.$uri);
-            
-//            list($width, $height, $type, $attr) = getimagesize($file);
             
             App\Picture::create([
                 'post_id' => $post->id,

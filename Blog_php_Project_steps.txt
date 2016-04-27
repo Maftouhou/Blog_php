@@ -35,6 +35,7 @@ OK - Ecrire les relation entre les tables sur les models
   ° Post
   ° picture
   ° Tag
+- enregistrer un utilisateur et des categorie a l'aide de Tinker
 
 
 ETAPE 3

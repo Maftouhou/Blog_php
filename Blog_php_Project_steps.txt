@@ -41,10 +41,14 @@ OK - enregistrer un utilisateur et des categorie a l'aide de Tinker
 
 ETAPE 3
 --------------------------------------
+- Retrouver les donnée
+  ° preparer les vues pour retrouver les donnée
+  ° Preparation des routes pour renvoyer au vue 
+  ° Controlleur pour renvoyer les Vues
+
 - Mise en place du CRUD
 - Prepater les controlleur
   ° Controlleur pour les action du CRUD
-  ° Controlleur pour renvoyer les Vues
 
 - Prepater les vues
   ° 

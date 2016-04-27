@@ -24,8 +24,8 @@ $factory->define(App\Post::class, function (Faker\Generator $faker) {
     return [
         'title' => $faker->title,
         'content' => $faker->paragraph(5),
-        'user_id' => rand(1, 2),
-        'category_id' => rand(1, 3),
+        'user_id' => rand(3, 4),
+        'category_id' => rand(1, 2),
         'published_at' => $faker->dateTime,
     ];
 });

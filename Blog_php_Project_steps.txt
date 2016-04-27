@@ -31,11 +31,12 @@ OK - Deployer les migrations
 ETAPE 2
 --------------------------------------
 OK - Ecrire les relation entre les tables sur les models
-- Preparation des données d'exemples et les deployer
+OK - Preparation des données d'exemples et les deployer
   ° Post
   ° picture
   ° Tag
-- enregistrer un utilisateur et des categorie a l'aide de Tinker
+OK - enregistrer un utilisateur et des categorie a l'aide de Tinker
+  ° 
 
 
 ETAPE 3

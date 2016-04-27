@@ -10,16 +10,6 @@ OK - Initialisation d'un premier commit
 OK - preparation du fichier Install SH
 OK - Modelisation de la Base *****
 OK - Configurer la base a utiliser sur le fichier .Env 
-
-- Prepater les controlleur, les vues
-- Preparation des données d'exemples et les deployer
-- Mettre en place les bonne pratique vue en cours
-  ° Validation avec le PostRequest
-  ° Gerer les 404
-  ° Utiliser les service provider
-
-ETAPE 2
---------------------------------------
 OK - Description des tables 
   1° User (name, email, password, role [Admi, editor])
   2° Post (title, content, status, published_at, User_id, Category_Id)
@@ -35,12 +25,35 @@ OK - preparer les model et migration.
 OK - Ecrire les migration En tenant compte des 
   ° Liste des methode pour ecrire les migrations : https://laravel.com/docs/5.2/migrations#creating-columns
   ° 
-OK - Deployer les tables
+OK - Deployer les migrations
 
 
+ETAPE 2
+--------------------------------------
+OK - Ecrire les relation entre les tables sur les models
+- Preparation des données d'exemples et les deployer
+  ° Post
+  ° picture
+  ° Tag
 
 
+ETAPE 3
+--------------------------------------
+- Mise en place du CRUD
+- Prepater les controlleur
+  ° Controlleur pour les action du CRUD
+  ° Controlleur pour renvoyer les Vues
 
+- Prepater les vues
+  ° 
+
+
+Etape 4
+--------------------------------------
+- Mettre en place les bonne pratique vue en cours
+  ° Validation avec le PostRequest
+  ° Gerer les 404
+  ° Utiliser les service provider
 
 
 ======================================

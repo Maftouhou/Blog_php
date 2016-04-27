@@ -42,23 +42,23 @@ ETAPE 3 - Retrouver les donnée
 --------------------------------------
 OK - preparer les vues pour retrouver les donnée: 
     : auth\login : page de login 	|| LoginController
-    : admin\post\[ceate, edit, index] 	|| AdminController
+    : admin\post\[ceate, edit, index] 	|| PostController
     : front\[index, show, user]		|| FrontController
     : layouts\master
     : partials\[nav, footer])
 
-- Controlleur pour renvoyer les Vues
+OK - Controlleur pour renvoyer les Vues
   ° LoginController - Renvoi la page d'identification
-  ° AdminController - gere le CRUD
+  ° PostController - gere le CRUD
   ° FrontController - gere l'affichage coté visiteur
 
 - Preparation des routes pour renvoyer au vue 
-
 - Mise en place du CRUD
 - Prepater les controlleur
   ° Controlleur pour les action du CRUD
 
 - Prepater les vues
+- Install Laravel DebugBar
 
 
 Etape 4

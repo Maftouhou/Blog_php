@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-class postController extends Controller
+use Auth;
+
+class PostController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +17,13 @@ class postController extends Controller
      */
     public function index()
     {
-        //
+        if (Auth::user()) {
+            
+            return Auth::user()->id.' you are logged in';
+        }  else {
+            
+            return 'No Urs on line';
+        }
     }
 
     /**

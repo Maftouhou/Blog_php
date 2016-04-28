@@ -8,7 +8,9 @@ use App\Http\Requests;
 
 use App\Post;
 
-class frontController extends Controller
+use Auth;
+
+class FrontController extends Controller
 {
     /**
      * This function get all post from the Schema and display to the user 
@@ -17,11 +19,13 @@ class frontController extends Controller
      */
     public function index(){
         
+        $loginState = !is_null(Auth::user())? true : false;
+        
         $pageNum = 10;
         $posts = Post::with('category', 'user', 'picture', 'tags')->paginate($pageNum);
         $postTitle = 'Liste des post';
         
-        return view('front.index', compact('posts', 'postTitle'));
+        return view('front.index', compact('posts', 'postTitle', 'loginState'));
     }
     
     /**

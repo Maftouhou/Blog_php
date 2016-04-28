@@ -16,6 +16,12 @@ Route::get('/', 'frontController@index');
 Route::get('post/{id}', 'frontController@show');
 
 /* Route Login */
-Route::get('login', 'loginController@login');
-Route::get('logout', 'loginController@logout');
-
+    
+Route::group(['midleware' => ['web']], function(){
+    Route::any('login', 'LoginController@login');
+    Route::any('logout', 'LoginController@logout');
+    
+    Route::group(['midleware' => ['auth']], function(){
+        route::resource('post', 'postController');
+    });
+});

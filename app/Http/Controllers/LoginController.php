@@ -31,7 +31,7 @@ class LoginController extends Controller
 //            dd($request);
             
             $credencials = $request->only('name', 'password');
-            if (Auth::attempt($credencials)) {
+            if (Auth::attempt($credencials) /*&& Auth::usesr()->role == 'Admin'*/) {
                 
                 return redirect('post')->with(['message' => 'Success']);
             }else{

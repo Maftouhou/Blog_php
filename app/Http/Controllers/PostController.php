@@ -8,6 +8,8 @@ use App\Http\Requests;
 
 use Auth;
 
+use App\Post;
+
 class PostController extends Controller
 {
     /**
@@ -17,13 +19,17 @@ class PostController extends Controller
      */
     public function index()
     {
+        $loginState = !is_null(Auth::user()) ? true : false;
         if (Auth::user()) {
             
-            return Auth::user()->id.' you are logged in';
+            $posts = Post::all();
+
+            return view('admin.post.index', compact('posts', 'loginState'));
         }  else {
             
-            return 'No Urs on line';
+            return view('auth.login', compact('loginState'));
         }
+        
     }
 
     /**

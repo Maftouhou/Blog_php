@@ -52,11 +52,14 @@ OK - Controlleur pour renvoyer les Vues
   ° PostController - gere le CRUD
   ° FrontController - gere l'affichage coté visiteur
 
-- faire les fichier template
-- Preparation des routes pour renvoyer au vue 
+OK - faire les fichier template
+OK - Preparation des routes pour renvoyer au vue 
+OK - mettre les lien pour le Nav
 - Mise en place du CRUD
 - Prepater les controlleur
   ° Controlleur pour les action du CRUD
+
+- Verifier le status des article à afficher
 
 - Prepater les vues
 - Install Laravel DebugBar
@@ -96,4 +99,28 @@ Laravel install - Use composer :
 - composer global require "laravel/installer" : permet d'initialiser les fichier la processus d'installation pour l'application. Notament, elle initialise la commande 'Laravel new'. A noter que aucune application qui doit empecher la connexion reseau ne doit etre actif, tel que les parfeux des anti-virus
 
 - Laravel new "Nom_de_l_aplication" : permet d'installer le projet Laravel avec tout les dependance. Une autre alternative qui reproduit la meme chose : composer create-project --prefer-dist laravel/Laravel "Nom_du_projet"
+
+
+
+
+
+TEMPLATING : 
+--------------------------------------
+@section : defini une partie du contenu de la page
+@yield : affiche le contenu d'une section donnée
+@extends : defini le template que la page doit heriter 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

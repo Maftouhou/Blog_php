@@ -1,16 +1,15 @@
 <nav>
     <ul id="navigation">
-        <li>Home</li>
+        <li><a href="{{url('/')}}">Home</a></li>
         <li>Contact</li>
     </ul>
     <ul id="connexion">
-        <li>
-            @if($loginState === true)
-                <a href="{{url('logout')}}">Logout</a>
-            @else
-                <a href="{{url('login')}}">Login</a>
-            @endif
-        </li>
+        @if($loginState === true)
+            <li><a id="login" href="{{url('logout')}}">Logout</a></li>
+            <li><a id="dashbord" href="{{url('post')}}">Dashbord</a></li>
+        @else
+            <li><a id="logout" href="{{url('login')}}">Login</a></li>
+        @endif
         <li>Registrer</li>
     </ul>
 </nav>

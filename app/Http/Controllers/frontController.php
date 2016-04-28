@@ -19,8 +19,9 @@ class frontController extends Controller
         
         $pageNum = 10;
         $posts = Post::with('category', 'user', 'picture', 'tags')->paginate($pageNum);
+        $postTitle = 'Liste des post';
         
-        return view('front.index', compact('posts'));
+        return view('front.index', compact('posts', 'postTitle'));
     }
     
     /**

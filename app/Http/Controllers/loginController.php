@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
-
+use Auth;
 use App\Http\Requests;
+use Illuminate\Http\Request;
+namespace App\Http\Controllers;
 
 class loginController extends Controller
 {
@@ -16,6 +15,7 @@ class loginController extends Controller
      */
     public function login(){
         
+        return view('auth.login');
     }
     
     /**
@@ -24,6 +24,8 @@ class loginController extends Controller
      * @return
      */
     public function logout(){
+        Auth::logout();
         
+        return redirect('/');
     }
 }

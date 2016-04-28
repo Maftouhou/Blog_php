@@ -1,8 +1,10 @@
-<?php
-
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
+<nav>
+    <ul id="navigation">
+        <li>Home</li>
+        <li>Contact</li>
+    </ul>
+    <ul id="connexion">
+        <li><a href="{{url('login')}}">Conditionner les Login/logout</a></li>
+        <li>Registrer</li>
+    </ul>
+</nav>

@@ -11,5 +11,11 @@
 |
 */
 
+/* Route Front */
 Route::get('/', 'frontController@index');
 Route::get('post/{id}', 'frontController@show');
+
+/* Route Login */
+Route::get('login', 'loginController@login');
+Route::get('logout', 'loginController@logout');
+

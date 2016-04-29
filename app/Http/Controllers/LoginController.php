@@ -25,10 +25,7 @@ class LoginController extends Controller
             $this->validate($request, [
                 'name' => 'required',
                 'password' => 'required'
-                //'' => ''
             ]);
-            
-//            dd($request);
             
             $credencials = $request->only('name', 'password');
             if (Auth::attempt($credencials) /*&& Auth::usesr()->role == 'Admin'*/) {

@@ -18,9 +18,6 @@ class FrontController extends Controller
      * @return function : the view that display the datas
      */
     public function index(){
-        
-        $loginState = !is_null(Auth::user())? true : false;
-        
         $pageNum = 10;
         $posts = Post::with('category', 'user', 'picture', 'tags')->paginate($pageNum);
         $postTitle = 'Liste des post';
@@ -34,9 +31,8 @@ class FrontController extends Controller
      * @return function : the view that display the post
      */
     public function show($id){
-        
         $post = Post::find($id);
         
-        return view('front.show', compact('post'));
+        return view('front.show', compact('post', 'loginState'));
     }
 }

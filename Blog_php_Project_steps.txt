@@ -112,7 +112,10 @@ TEMPLATING :
 
 
 
-
+QUESTION 
+--------------------------------------
+- Cache des route,
+- Factoriser les variable de gestion des connexion 
 
 
 

@@ -1,3 +1,4 @@
+<?php $loginState = Auth::check() ? true : false ?>
 <nav>
     <ul id="navigation">
         <li><a href="{{url('/')}}">Home</a></li>

@@ -8,7 +8,11 @@ use App\Http\Requests;
 
 use Auth;
 
+use App\Tag;
+
 use App\Post;
+
+use App\Category;
 
 class PostController extends Controller
 {
@@ -19,7 +23,6 @@ class PostController extends Controller
      */
     public function index()
     {
-        $loginState = !is_null(Auth::user()) ? true : false;
         if (Auth::user()) {
             
             $posts = Post::all();
@@ -29,7 +32,6 @@ class PostController extends Controller
             
             return view('auth.login', compact('loginState'));
         }
-        
     }
 
     /**
@@ -39,7 +41,11 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::lists('title', 'id');
+        $tags = Tag::lists('name', 'id');
+        $userId = Auth::user()->id;
+        
+        return view('admin.post.create', compact('categories', 'tags', 'userId', 'loginState'));
     }
 
     /**

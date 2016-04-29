@@ -12,16 +12,18 @@
 */
 
 /* Route Front */
-Route::get('/', 'frontController@index');
-Route::get('post/{id}', 'frontController@show');
+Route::get('/', 'FrontController@index');
+Route::get('article/{id}', 'FrontController@show');
 
 /* Route Login */
     
 Route::group(['midleware' => ['web']], function(){
+    
+    
     Route::any('login', 'LoginController@login');
     Route::any('logout', 'LoginController@logout');
     
     Route::group(['midleware' => ['auth']], function(){
-        route::resource('post', 'postController');
+        route::resource('post', 'PostController');
     });
 });

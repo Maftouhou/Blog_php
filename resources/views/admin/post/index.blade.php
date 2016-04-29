@@ -1,6 +1,12 @@
 @extends('layouts.master')
 
 @section('content')
+<div id="panel">
+    <ul>
+        <li><a href="{{url('post/create')}}">Create</a></li>
+    </ul>
+</div>
+<div id="core">
     <table>
         <thead>
             <tr>
@@ -29,4 +35,5 @@
             <p>Pas d'article</p>
         @endforelse
     </table>
+</div>
 @endsection

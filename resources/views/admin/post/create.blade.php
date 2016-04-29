@@ -1,7 +1,8 @@
 @extends('layouts.master')
 
 @section('content')
-    <form action="" method="">
+    <form action="{{url('post')}}" method="POST">
+        {{csrf_field()}}
         <fieldset>
             <legend>Editer l'article</legend>
             <p>Creer un nouvel article </p>
@@ -14,6 +15,7 @@
         </fieldset>
 
         <fieldset>
+            <legend>Selectionner les options</legend>
             <p>Status de l'article <br>
                 <label for="draft">draft</label>
                 <input type="radio" id="draft" name="status" value="['draft']"><br>
@@ -22,7 +24,6 @@
                 <label for="offline">offline</label>
                 <input type="radio" id="offline" name="status" value="['offline']"><br>
             </p>
-                <legend>Selectionner les options</legend>
             <p> Selectionner une categorie <br>
                 <select name="category" id="">
                     <option>- Selectionner -</option>
@@ -38,7 +39,7 @@
                 </select>
             </p>
             <p>Selectionner une des mots clé <br>
-                <select name="tags" id="" multiple>
+                <select name="tags[]" id="" multiple>
                     @forelse($tags as $tag_id => $tag_value)
                         @if(!is_null($tag_value))
                             <option value="{{$tag_id}}">{{$tag_value}}</option>

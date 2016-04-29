@@ -35,7 +35,11 @@ class Post extends Model
      */
     
     protected $filables=[
-        'field1'
+        'title', 
+        'content',
+        'status',
+        'category',
+        'tags'
     ];
     
     /**

@@ -116,7 +116,12 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::find($id);
+        $userId = Auth::user()->id;
+        $categories = Category::all();
+        $tags = Tag::lists('name', 'id');
+        
+        return view('admin.post.edit', compact('post', 'userId', 'categories', 'tags'));
     }
 
     /**
@@ -139,6 +144,6 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return 'we are in the Delete methode';
     }
 }

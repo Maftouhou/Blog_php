@@ -28,6 +28,21 @@ class Post extends Model
         return $this->hasOne('App\Picture');
     }
     
+    public function hasTag($id)
+    {
+        if (is_null($this->tags)) {
+        
+            return false;
+        }
+        
+        foreach ($this->tags as $tag) {
+            if ($tag->id === $id){
+                return true;
+            } 
+        }
+        
+        return false;
+    }
     /**
      * Field set configuration
      * 

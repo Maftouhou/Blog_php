@@ -48,8 +48,16 @@
                     <?php #var_dump($post->tags) ?>
                 </td>
                 <td>{{$post->updated_at}}</td>
-                <td><a href="#">Editer</a></td>
-                <td><a href="#">Suprimer</a></td>
+                <td>
+                    <a href="{{url('post/'.$post->id.'/edit')}}" class="">Editer</a>
+                </td>
+                <td>
+                    <form action="{{url('post', $post->id)}}" method="POST">
+                        {{method_field('DELETE')}}
+                        {{csrf_field()}}
+                        <input type="submit" value="delete">
+                    </form>
+                </td>
             </tr>
         </tbody>
         @empty

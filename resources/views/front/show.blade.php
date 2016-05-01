@@ -6,7 +6,7 @@
     <h1>{{$post->title}}</h1>
     <p>{{$post->content}}</p>
     @if(!is_null($post->picture))
-        <p><img src="{{url('uploads', $post->picture->uri)}}"></p>
+        <p id="{{$post->picture->id}}"><img src="{{url('uploads', $post->picture->uri)}}"></p>
     @else
     @endif
     <span>Published on {{$post->published_at}}

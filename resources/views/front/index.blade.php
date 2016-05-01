@@ -9,7 +9,7 @@
         
         <p>{{$post->content}}<span><a href="{{url('article', $post->id)}}">Lire la suite</a></span></p>
         @if(!is_null($post->picture))
-            <p><img src="{{url('uploads', $post->picture->uri)}}"></p>
+        <p id="{{$post->picture->id}}"><img src="{{url('uploads', $post->picture->uri)}}"></p>
         @else
             <p>Pas de photo associé</p>
         @endif

@@ -1,25 +1,22 @@
 <?php
 
-
 namespace App\Http\Controllers;
 
-use App\Http\Requests;
-//
 use Illuminate\Http\Request;
-//
-use App\Http\Requests\PostRequest;
-//
-use App\Category;
-//
-use App\Post;
-//
-use App\tag;
-//
+
+use App\Http\Requests;
+
 use Auth;
-//
-//use View;
-//
-//use File;
+
+use App\Tag;
+
+use App\Post;
+
+use App\Picture;
+
+use App\Category;
+
+use App\Http\Requests\PostRequest;
 
 
 class PostController extends Controller
@@ -62,7 +59,7 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(PostRequest $request)
+    public function store(Request $request)
     {
         $post = Post::create($request->all());
         
@@ -70,29 +67,33 @@ class PostController extends Controller
             $post->tags()->attach($request->input('tag_id'));
         }
                
-        dd($request);
+        $im = $request->file('picture');
+//        dd($im);
         
         // refactoring voir plus bas la méthode private upload
-//        if (!is_null($im)) {
-//            $this->upload($im, $request->input('name'), $post->id);
-//        }
+        if (!is_null($im)) {
+            $this->upload($im, $post->id);
+        }
         
         return redirect('post')->with('message', 'success');
     }
     
-    private function upload($im, $name, $postId)
+    private function upload($img, $postId)
     {
-        $ext = $im->getClientOriginalExtension(); // extension du fichier
-        $uri = str_random(50) . '.' . $ext;
+        $image_extention = $img->getClientOriginalExtension();
+        $image_base_name = Auth::user()->id.'_'.time();
+        $uri = Auth::user()->id.'_'.time().'.'.$image_extention; //User_id timestamp file base name
+        
         Picture::create([
-            'name' => $name,
+            'name' => $image_base_name,
             'uri' => $uri,
-            'size' => $im->getSize(),
-            'mime' => $im->getClientMimeType(),
+            'size' => $img->getSize(),
+            'mime' => $img->getClientMimeType(),
             'post_id' => $postId
         ]);
+        
         // exception levé par le framework si pb
-        $im->move(env('UPLOAD_PICTURES', 'uploads'), $uri);
+        $img->move(env('UPLOAD_PICTURES', 'uploads'), $uri);
         return true;
     }
 

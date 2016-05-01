@@ -32,7 +32,7 @@ class PostRequest extends Request
             'content' => 'required',
             'category_id' => 'regex:/[0-9]{1,}/',
             'user_id' => 'integer',
-            'status' => 'in:draft,online,offline',
+            'status' => 'in:draft,online,offline'
 //            'picture' => 'required|mimes:jpg'
         ];
     }

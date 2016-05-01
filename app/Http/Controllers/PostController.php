@@ -149,7 +149,12 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        return 'we are in the Delete methode';
+        $post = Post::findOrFail($id);
+        $postTitle = $post->title;
+        
+        $post->delete();
+        
+        return redirect('post')->with(['message' => sprintf('You have delete the post%s', $postTitle)]);
     }
     
     private function deletePicture(Post $post)

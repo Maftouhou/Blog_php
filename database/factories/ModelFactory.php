@@ -22,11 +22,11 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 
 $factory->define(App\Post::class, function (Faker\Generator $faker) {
     return [
+        'user_id' => rand(3, 4),
+        'picture_id' => rand(1, 25),
+        'category_id' => rand(1, 2),
         'title' => $faker->title,
         'content' => $faker->paragraph(5),
-        'user_id' => rand(3, 4),
-        'category_id' => rand(1, 2),
-        'published_at' => $faker->dateTime,
     ];
 });
 

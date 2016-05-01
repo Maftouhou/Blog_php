@@ -34,12 +34,12 @@ class Post extends Model
      * @return datatype
      */
     
-    protected $filables=[
+    protected $fillable =[
         'title', 
         'content',
-        'status',
-        'category',
-        'tags'
+        'user_id',
+        'category_id',
+        'status'
     ];
     
     /**

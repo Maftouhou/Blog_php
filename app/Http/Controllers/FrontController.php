@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use App\Picture;
+
 use App\Post;
 
 use Auth;
@@ -18,11 +20,12 @@ class FrontController extends Controller
      * @return function : the view that display the datas
      */
     public function index(){
-        $pageNum = 10;
+        $pageNum = 1000;
         $posts = Post::with('category', 'user', 'picture', 'tags')->paginate($pageNum);
         $postTitle = 'Liste des post';
+        $picture = Picture::all();
         
-        return view('front.index', compact('posts', 'postTitle', 'loginState'));
+        return view('front.index', compact('posts', 'postTitle', 'picture'));
     }
     
     /**

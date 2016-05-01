@@ -2,7 +2,11 @@
 
 namespace App\Http\Requests;
 
-use App\Http\Requests\Request;
+//use App\Http\Requests\Request;
+//
+//use Illuminate\Support\Facades\Request;
+
+use Illuminate\Http\Request;
 
 class PostRequest extends Request
 {
@@ -26,9 +30,10 @@ class PostRequest extends Request
         return [
             'title' => 'required',
             'content' => 'required',
-            'status' => 'required',
-            'category' => 'required',
-            'tags' => 'required'
+            'category_id' => 'regex:/[0-9]{1,}/',
+            'user_id' => 'integer',
+            'status' => 'in:draft,online,offline',
+//            'picture' => 'required|mimes:jpg'
         ];
     }
 }

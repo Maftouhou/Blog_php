@@ -11,9 +11,10 @@
         @if(!is_null($post->picture))
             <p><img src="{{url('uploads', $post->picture->uri)}}"></p>
         @else
+            <p>Pas de photo associé</p>
         @endif
         
-        <span>Published on {{$post->published_at}}
+        <span>Published on {{$post->created_at}}
         @if(!is_null($post->user))
             by <b><em>{{$post->user->name}}</em></b>
         @else

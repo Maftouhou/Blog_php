@@ -1,20 +1,26 @@
 <?php
 
+
 namespace App\Http\Controllers;
-
-use App\Http\Requests\PostRequest;
-
-use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-use Auth;
+use Illuminate\Http\Request;
 
-use App\Tag;
+use App\Http\Requests\PostRequest;
+
+use App\Category;
 
 use App\Post;
 
-use App\Category;
+use App\tag;
+
+use Auth;
+
+use View;
+
+use File;
+
 
 class PostController extends Controller
 {
@@ -29,7 +35,7 @@ class PostController extends Controller
             
             $posts = Post::all();
 
-            return view('admin.post.index', compact('posts', 'loginState'));
+            return view('admin.post.index', compact('posts'));
         }  else {
             
             return view('auth.login', compact('loginState'));
@@ -47,7 +53,7 @@ class PostController extends Controller
         $tags = Tag::lists('name', 'id');
         $userId = Auth::user()->id;
         
-        return view('admin.post.create', compact('categories', 'tags', 'userId', 'loginState'));
+        return view('admin.post.create', compact('categories', 'tags', 'userId'));
     }
 
     /**
@@ -58,15 +64,36 @@ class PostController extends Controller
      */
     public function store(PostRequest $request)
     {
-        $posts = new Post;
-
-        $posts->title = $request->title;
-
-//        $posts->save();
+        $post = Post::create($request->all());
         
-        dd($posts->title);
+        if (!is_null($request->input('tag_id'))) {
+            $post->tags()->attach($request->input('tag_id'));
+        }
+               
+        dd($request);
         
-        return 'All done';
+        // refactoring voir plus bas la méthode private upload
+//        if (!is_null($im)) {
+//            $this->upload($im, $request->input('name'), $post->id);
+//        }
+        
+        return redirect('post')->with('message', 'success');
+    }
+    
+    private function upload($im, $name, $postId)
+    {
+        $ext = $im->getClientOriginalExtension(); // extension du fichier
+        $uri = str_random(50) . '.' . $ext;
+        Picture::create([
+            'name' => $name,
+            'uri' => $uri,
+            'size' => $im->getSize(),
+            'mime' => $im->getClientMimeType(),
+            'post_id' => $postId
+        ]);
+        // exception levé par le framework si pb
+        $im->move(env('UPLOAD_PICTURES', 'uploads'), $uri);
+        return true;
     }
 
     /**

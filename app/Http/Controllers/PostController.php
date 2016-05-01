@@ -8,6 +8,8 @@ use App\Http\Requests;
 
 use Auth;
 
+use File;
+
 use App\Tag;
 
 use App\Post;
@@ -78,25 +80,6 @@ class PostController extends Controller
         return redirect('post')->with('message', 'success');
     }
     
-    private function upload($img, $postId)
-    {
-        $image_extention = $img->getClientOriginalExtension();
-        $image_base_name = Auth::user()->id.'_'.time();
-        $uri = Auth::user()->id.'_'.time().'.'.$image_extention; //User_id timestamp file base name
-        
-        Picture::create([
-            'name' => $image_base_name,
-            'uri' => $uri,
-            'size' => $img->getSize(),
-            'mime' => $img->getClientMimeType(),
-            'post_id' => $postId
-        ]);
-        
-        // exception levé par le framework si pb
-        $img->move(env('UPLOAD_PICTURES', 'uploads'), $uri);
-        return true;
-    }
-
     /**
      * Display the specified resource.
      *
@@ -105,7 +88,9 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = Post::find($id);
+        
+        return $post;
     }
 
     /**
@@ -125,17 +110,37 @@ class PostController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    * Update the specified resource in storage.
+    *
+    * @param  \Illuminate\Http\Request  $request
+    * @param  int  $id
+    * @return \Illuminate\Http\Response
+    */
     public function update(Request $request, $id)
     {
-        //
+        $post = Post::findOrFail($id);
+        $post->update($request->all());
+        
+        if (!is_null($request->input('tag_id'))) {
+            $post->tags()->sync($request->input('tag_id'));
+        }
+        
+        $image = $request->file('picture');
+        
+        if ($request->input('delete_picture')) {
+            $this->deletePicture($post);
+            $message[] = 'success delete image';
+        }
+        
+        if (!is_null($image)) {
+            $this->deletePicture($post);
+            $this->upload($image, $post->id);
+            $message[] = 'success upload image';
+        }
+        
+        return redirect('post');
     }
-
+    
     /**
      * Remove the specified resource from storage.
      *
@@ -145,5 +150,37 @@ class PostController extends Controller
     public function destroy($id)
     {
         return 'we are in the Delete methode';
+    }
+    
+    private function deletePicture(Post $post)
+    {
+        if (!is_null($post->picture)) {
+            $fileName = public_path('uploads') . DIRECTORY_SEPARATOR . $post->picture->uri;
+            if (File::exists($fileName))
+                File::delete($fileName);
+            $post->picture->delete();
+            return true;
+        }
+        return false;
+    }
+    
+    
+        private function upload($img, $postId)
+    {
+        $image_extention = $img->getClientOriginalExtension();
+        $image_base_name = Auth::user()->id.'_'.time();
+        $uri = Auth::user()->id.'_'.time().'.'.$image_extention; //User_id timestamp file base name
+        
+        Picture::create([
+            'name' => $image_base_name,
+            'uri' => $uri,
+            'size' => $img->getSize(),
+            'mime' => $img->getClientMimeType(),
+            'post_id' => $postId
+        ]);
+        
+        // exception levé par le framework si pb
+        $img->move(env('UPLOAD_PICTURES', 'uploads'), $uri);
+        return true;
     }
 }

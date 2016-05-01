@@ -6,7 +6,8 @@
     <p>{{Session::get('message')}}</p>
 @endif
 
-    <form action="{{url('post')}}" method="POST" enctype="multipart/form-data">
+    <form method="POST" action="{{url('post', $post->id)}}" enctype="multipart/form-data" >
+        {{method_field('PATCH')}}
         {{csrf_field()}}
         <fieldset>
             <legend>Modifier l'article</legend>

@@ -36,6 +36,6 @@ class FrontController extends Controller
     public function show($id){
         $post = Post::find($id);
         
-        return view('front.show', compact('post', 'loginState'));
+        return view('front.show', compact('post'));
     }
 }

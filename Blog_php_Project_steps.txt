@@ -55,14 +55,26 @@ OK - Controlleur pour renvoyer les Vues
 OK - faire les fichier template
 OK - Preparation des routes pour renvoyer au vue 
 OK - mettre les lien pour le Nav
-- Mise en place du CRUD
-- Prepater les controlleur
+OK - Mise en place du CRUD
+OK - Prepater les controlleur
   ° Controlleur pour les action du CRUD
 
-- Verifier le status des article à afficher
+OK - Verifier le status des article à afficher
 
-- Prepater les vues
+OK - Prepater les vues
 - Install Laravel DebugBar
+
+Etape 3.Bis
+--------------------------------------
+OK - verifier laffichage des article s'il comporte les le titre, contenu, meta donnée et image
+OK - redure le text de la page daccueil 
+OK - Afficher les articles d'une meme categorie, puis afficher l'article si on clique sur le titre
+OK - verifier la mise a jour de la date de modification
+OK - s'assurer que les categorie sur le sidebar sont bien seux qui sont en base
+OK - redeployer la table POST et suprimer le champ Picture_id
+- refaire le diagrame des table de la base
+- gerer les utilisateur qui peuvent publier un contenu
+
 
 
 Etape 4
@@ -71,12 +83,12 @@ Etape 4
   ° Validation avec le PostRequest
   ° Gerer les 404
   ° Utiliser les service provider
+- revoir le scripte install.sh
 
 
 Etape 5 - Mise en place des Asset
 --------------------------------------
 - Configuration de GULP pour la compilation du SASS et JS
-
 
 
 
@@ -99,7 +111,7 @@ Laravel install - Use composer :
 - composer global require "laravel/installer" : permet d'initialiser les fichier la processus d'installation pour l'application. Notament, elle initialise la commande 'Laravel new'. A noter que aucune application qui doit empecher la connexion reseau ne doit etre actif, tel que les parfeux des anti-virus
 
 - Laravel new "Nom_de_l_aplication" : permet d'installer le projet Laravel avec tout les dependance. Une autre alternative qui reproduit la meme chose : composer create-project --prefer-dist laravel/Laravel "Nom_du_projet"
-
+- unit, conf, integ
 
 
 

@@ -14,6 +14,7 @@
 /* Route Front */
 Route::get('/', 'FrontController@index');
 Route::get('article/{id}', 'FrontController@show');
+Route::get('category/{id}', 'FrontController@showPostDyCategory');
 
 /* Route Login */
     

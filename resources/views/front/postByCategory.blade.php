@@ -1,19 +1,17 @@
 @extends('layouts.master')
 
-@section('title', $postTitle)
-
 @section('content')
     <p>This is the most recent content </p>
     @forelse($posts as $post)
         <h1><a href="{{url('article', $post->id)}}">{{$post->title}}</a></h1>
-        
+
         <p>{{str_limit($post->content, 70)}}<span><a href="{{url('article', $post->id)}}">Lire la suite</a></span></p>
         @if(!is_null($post->picture))
         <p id="{{$post->picture->id}}"><img src="{{url('uploads', $post->picture->uri)}}"></p>
         @else
             <p>Pas de photo associé</p>
         @endif
-        
+
         <span>Published on {{$post->created_at}}
         @if(!is_null($post->user))
             by <b><em>{{$post->user->name}}</em></b>
@@ -24,5 +22,5 @@
     @empty
         <p>Pas d'article</p>
     @endforelse
-    
+
 @endsection

@@ -54,7 +54,8 @@ class Post extends Model
         'content',
         'user_id',
         'category_id',
-        'status'
+        'status',
+        'updated_at'
     ];
     
     /**

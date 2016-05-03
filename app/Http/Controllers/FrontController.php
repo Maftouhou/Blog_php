@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use App\Category;
+
 use App\Picture;
 
 use App\Post;
@@ -25,7 +27,9 @@ class FrontController extends Controller
         $postTitle = 'Liste des post';
         $picture = Picture::all();
         
-        return view('front.index', compact('posts', 'postTitle', 'picture'));
+        $categories = Category::all();
+        
+        return view('front.index', compact('posts', 'postTitle', 'picture', 'categories'));
     }
     
     /**
@@ -36,6 +40,16 @@ class FrontController extends Controller
     public function show($id){
         $post = Post::find($id);
         
-        return view('front.show', compact('post'));
+        $categories = Category::all();
+        
+        return view('front.show', compact('post', 'categories'));
+    }
+    
+    public function showPostDyCategory($id){
+        $category = Category::findOrFail($id);
+        $categories = Category::all();
+        $posts = $category->posts()->get();
+        
+        return view('front.postByCategory', compact('posts', 'categories'));
     }
 }

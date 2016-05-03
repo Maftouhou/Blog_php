@@ -33,9 +33,9 @@
             <p> Selectionner une categorie <br>
                 <select name="category_id" id="">
                     <option>- Selectionner -</option>
-                    @forelse($categories as $category_id => $category_value)
-                        @if(!is_null($category_value))
-                            <option value="{{$category_id}}">{{$category_value}}</option>
+                    @forelse($categories as $category)
+                        @if(!is_null($category))
+                            <option value="{{$category->id}}">{{$category->title}}</option>
                         @else
 
                         @endif

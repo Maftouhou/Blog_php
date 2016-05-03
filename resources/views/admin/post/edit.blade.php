@@ -12,8 +12,9 @@
         <fieldset>
             <legend>Modifier l'article</legend>
             
-            <p>Modifier votre article </p>
+            <p>Modifier votre article le {{$curentDate}} </p>
             <input type="hidden" name="user_id" value="{{$userId}}" />
+            <input type="hidden" name="updated_at" value="{{$curentDate}}" />
             <p>Titre de l'article <br>
                 <input type="text" name="title" placeholder="Titre de l'Article" value="{{$post->title}}">
             </p>

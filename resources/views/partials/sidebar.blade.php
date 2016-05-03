@@ -1,7 +1,9 @@
 <aside id="sidebar">
     <ul id="category">
-        <li>Nouveaté</li>
-        <li>Conferances</li>
+        @forelse($categories as $category)
+        <li id="{{$category->id}}"><a href="{{url('category', $category->id)}}">{{$category->title}}</a></li>
+        @empty
+        @endforelse
     </ul>
     <ul id="la_une">
         <li>

@@ -9,7 +9,7 @@
         <p id="{{$post->picture->id}}"><img src="{{url('uploads', $post->picture->uri)}}"></p>
     @else
     @endif
-    <span>Published on {{$post->published_at}}
+    <span>Published on {{$post->created_at}}
     @if(!is_null($post->user))
         by <b><em><span><a href="#">{{$post->user->name}}</a></span></em></b>
     @else

@@ -16,6 +16,8 @@ use App\Post;
 
 use App\Picture;
 
+use Carbon;
+
 use App\Category;
 
 use App\Http\Requests\PostRequest;
@@ -33,11 +35,13 @@ class PostController extends Controller
         if (Auth::user()) {
             
             $posts = Post::all();
+            
+            $categories = Category::all();
 
-            return view('admin.post.index', compact('posts'));
+            return view('admin.post.index', compact('posts', 'categories'));
         }  else {
             
-            return view('auth.login', compact('loginState'));
+            return view('auth.login', compact('categories'));
         }
     }
 
@@ -48,7 +52,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        $categories = Category::lists('title', 'id');
+//        $categories = Category::lists('title', 'id');
+        $categories = Category::all();
         $tags = Tag::lists('name', 'id');
         $userId = Auth::user()->id;
         
@@ -90,6 +95,8 @@ class PostController extends Controller
     {
         $post = Post::find($id);
         
+        $categories = Category::all();
+        
         return $post;
     }
 
@@ -106,7 +113,10 @@ class PostController extends Controller
         $categories = Category::all();
         $tags = Tag::lists('name', 'id');
         
-        return view('admin.post.edit', compact('post', 'userId', 'categories', 'tags'));
+        $curentDate = Carbon\Carbon::now();
+        
+//        return $mytime;
+        return view('admin.post.edit', compact('post', 'userId', 'categories', 'tags', 'curentDate'));
     }
 
     /**
@@ -119,6 +129,8 @@ class PostController extends Controller
     public function update(Request $request, $id)
     {
         $post = Post::findOrFail($id);
+        
+//        dd($post, $request);
         $post->update($request->all());
         
         if (!is_null($request->input('tag_id'))) {
@@ -161,8 +173,9 @@ class PostController extends Controller
     {
         if (!is_null($post->picture)) {
             $fileName = public_path('uploads') . DIRECTORY_SEPARATOR . $post->picture->uri;
-            if (File::exists($fileName))
+            if (File::exists($fileName)){
                 File::delete($fileName);
+            }
             $post->picture->delete();
             return true;
         }

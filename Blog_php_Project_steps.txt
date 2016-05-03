@@ -72,23 +72,27 @@ OK - Afficher les articles d'une meme categorie, puis afficher l'article si on c
 OK - verifier la mise a jour de la date de modification
 OK - s'assurer que les categorie sur le sidebar sont bien seux qui sont en base
 OK - redeployer la table POST et suprimer le champ Picture_id
+
 - refaire le diagrame des table de la base
 - gerer les utilisateur qui peuvent publier un contenu
 
 
 
-Etape 4
+Etape 4 - Mise en place des Asset
+--------------------------------------
+- mise en place des web tools : gulp pour sass
+  ° Voir une mise en place de Grunt aussi (Optionnel)
+
+- configuration des et gestion des assets
+  ° Preparation des dossier SASS
+  ° Faire le choix des librairie JS à utiliser 
+
+Etape 5
 --------------------------------------
 - Mettre en place les bonne pratique vue en cours
-  ° Validation avec le PostRequest
   ° Gerer les 404
   ° Utiliser les service provider
 - revoir le scripte install.sh
-
-
-Etape 5 - Mise en place des Asset
---------------------------------------
-- Configuration de GULP pour la compilation du SASS et JS
 
 
 

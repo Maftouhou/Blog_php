@@ -19,7 +19,7 @@ class pictureTableSeeder extends Seeder
         
         $files = File::allFiles($dirUpload);
         
-        foreach ($files as $file) File::delete($file);
+        foreach ($files as $file) { File::delete($file); }
         
         $posts = App\Post::all();
         

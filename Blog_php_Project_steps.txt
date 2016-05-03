@@ -73,15 +73,14 @@ OK - verifier la mise a jour de la date de modification
 OK - s'assurer que les categorie sur le sidebar sont bien seux qui sont en base
 OK - redeployer la table POST et suprimer le champ Picture_id
 
-- refaire le diagrame des table de la base
-- gerer les utilisateur qui peuvent publier un contenu
-
+OK - refaire le diagrame des table de la base
 
 
 Etape 4 - Mise en place des Asset
 --------------------------------------
-- mise en place des web tools : gulp pour sass
+OK - mise en place des web tools : gulp pour sass
   ° Voir une mise en place de Grunt aussi (Optionnel)
+  ° Faire l'inclution automatique des assets sur le html (Optionnel)
 
 - configuration des et gestion des assets
   ° Preparation des dossier SASS
@@ -89,6 +88,7 @@ Etape 4 - Mise en place des Asset
 
 Etape 5
 --------------------------------------
+- gerer les utilisateur qui peuvent publier un contenu
 - Mettre en place les bonne pratique vue en cours
   ° Gerer les 404
   ° Utiliser les service provider

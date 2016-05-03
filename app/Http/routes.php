@@ -11,19 +11,26 @@
 |
 */
 
-/* Route Front */
+/**
+ * Route pattern 
+ */
+Route::pattern('id', '[1-9][0-9]*');
+
+/**
+ * Routes Front
+ */
 Route::get('/', 'FrontController@index');
 Route::get('article/{id}', 'FrontController@show');
 Route::get('category/{id}', 'FrontController@showPostDyCategory');
 
-/* Route Login */
-    
+/**
+ * Route Loin
+ */
 Route::group(['midleware' => ['web']], function(){
-    
     
     Route::any('login', 'LoginController@login');
     Route::any('logout', 'LoginController@logout');
-    
+
     Route::group(['midleware' => ['auth']], function(){
         route::resource('post', 'PostController');
     });

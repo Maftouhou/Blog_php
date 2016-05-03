@@ -82,9 +82,9 @@ OK - mise en place des web tools : gulp pour sass
   ° Voir une mise en place de Grunt aussi (Optionnel)
   ° Faire l'inclution automatique des assets sur le html (Optionnel)
 
-- configuration des et gestion des assets
-  ° Preparation des dossier SASS
-  ° Faire le choix des librairie JS à utiliser 
+OK - configuration des et gestion des assets
+v  ° Preparation des dossier SASS
+v  ° Faire le choix des librairie JS à utiliser 
 
 Etape 5
 --------------------------------------

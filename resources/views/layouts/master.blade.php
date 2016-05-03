@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>PHP BLOG Project</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="{{url('assets/css/app.min.css')}}" type="text/css"/>
+    <link rel="stylesheet" href="{{url('assets/css/bootstrap.css')}}" type="text/css"/>
 </head>
 <body>
     <div id="wrapper">
@@ -24,5 +27,7 @@
             @include('partials.footer')
         </footer>
     </div>
+    
+    <script src="{{url('assets/js/app.min.js')}}" ></script>
 </body>
 </html>

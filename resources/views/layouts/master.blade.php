@@ -27,7 +27,6 @@
             @include('partials.footer')
         </footer>
     </div>
-    
     <script src="{{url('assets/js/app.min.js')}}" ></script>
 </body>
 </html>

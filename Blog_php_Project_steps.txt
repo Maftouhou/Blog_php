@@ -88,6 +88,7 @@ v  ° Faire le choix des librairie JS à utiliser
 
 Etape 5
 --------------------------------------
+- inserer les JS et les CSS automatiquement avec GULP
 - gerer les utilisateur qui peuvent publier un contenu
 - Mettre en place les bonne pratique vue en cours
   ° Gerer les 404
@@ -115,7 +116,11 @@ Laravel install - Use composer :
 - composer global require "laravel/installer" : permet d'initialiser les fichier la processus d'installation pour l'application. Notament, elle initialise la commande 'Laravel new'. A noter que aucune application qui doit empecher la connexion reseau ne doit etre actif, tel que les parfeux des anti-virus
 
 - Laravel new "Nom_de_l_aplication" : permet d'installer le projet Laravel avec tout les dependance. Une autre alternative qui reproduit la meme chose : composer create-project --prefer-dist laravel/Laravel "Nom_du_projet"
-- unit, conf, integ
+
+Major testing 
+- Test unitaire
+- Test de configuration
+- Test d'integration
 
 
 
@@ -126,12 +131,6 @@ TEMPLATING :
 @yield : affiche le contenu d'une section donnée
 @extends : defini le template que la page doit heriter 
 
-
-
-QUESTION 
---------------------------------------
-- Cache des route,
-- Factoriser les variable de gestion des connexion 
 
 
 

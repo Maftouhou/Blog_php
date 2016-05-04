@@ -1,12 +1,14 @@
-var gulp = require('gulp'),
-    sass = require('gulp-sass'),
-    minify = require('gulp-minify-css'),
-    concat = require('gulp-concat'),
-    uglify = require('gulp-uglify'),
-    rename = require('gulp-rename');
+
+var gulp    = require('gulp'),
+    sass    = require('gulp-sass'),
+    minify  = require('gulp-minify-css'),
+    concat  = require('gulp-concat'),
+    uglify  = require('gulp-uglify'),
+    rename  = require('gulp-rename'),
+    inject  = require('gulp-inject');
     
-var date = new Date(),
-    file_time = date.getTime();
+var date        = new Date(),
+    file_time   = date.getTime();
 
 /*
  |--------------------------------------------------------------------------
@@ -23,16 +25,25 @@ var path =
 {
     'resources': 
     {
-        'sass': './resources/assets/sass',
-        'js': './resources/assets/js'
+        'sass'  : './resources/assets/sass',
+        'js'    : './resources/assets/js'
     },
     'public': 
     {
-        'css': './public/assets/css',
-        'js': './public/assets/js'
+        'css'   : './public/assets/css',
+        'js'    : './public/assets/js'
     },
-    'sass': './resources/assets/sass/**/*.scss',
-    'js': './resources/assets/js/**/*.js'
+    'inject':
+    {
+        'source':
+        {
+            'css'   : './public/assets/css/**/*.css',
+            'js'    : './public/assets/js/**/*.js'
+        },
+        'target'    : './resources/layouts/master.blade.php'
+    },
+    'sass'      : './resources/assets/sass/**/*.scss',
+    'js'        : './resources/assets/js/**/*.js'
 };
 
 gulp.task('sass', function() {
@@ -50,6 +61,13 @@ gulp.task('js', function() {
         .pipe(uglify())
         .pipe(rename({suffix: '.min'}))
         .pipe(gulp.dest(path.public.js));
+});
+
+gulp.task('inject', function(){
+    var source = gulp.src([path.inject.source.css, path.inject.source.js]);
+    var target = gulp.src(path.inject.target);
+    
+    return target.pipe(inject(source));
 });
 
 gulp.task('test', function(){

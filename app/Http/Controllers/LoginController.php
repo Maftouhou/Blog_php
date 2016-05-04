@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Auth;
 
+use App\Category;
+
 use App\Http\Requests;
 
 use Illuminate\Http\Request;
@@ -18,7 +20,7 @@ class LoginController extends Controller
      */
     public function login(Request $request){
         
-        $loginState = !is_null(Auth::user())? true : false;
+        $categories = Category::all();
         
         if ($request->isMethod('POST')) {
             
@@ -37,7 +39,7 @@ class LoginController extends Controller
             }
             
         }else{
-            return view('auth.login', compact('loginState'));
+            return view('auth.login', compact('categories'));
         }
     }
     

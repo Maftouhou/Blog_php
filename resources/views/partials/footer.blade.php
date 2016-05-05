@@ -1,6 +1,6 @@
 <footer>
     <ul>
-        <li>Mention legal</li>
+        <li>Mention legal&nbsp;</li>
         <li>Copyryth</li>
     </ul>
 </footer>

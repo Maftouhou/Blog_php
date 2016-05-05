@@ -8,25 +8,46 @@
     <link rel="stylesheet" href="{{url('assets/css/bootstrap.css')}}" type="text/css"/>
 </head>
 <body>
-    <div id="wrapper">
-        <header id="page_header">
-            @include('partials.nav')
-        </header>
+    <div id="wrapper" class="conteiner">
+        <div class="row">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-6">
+                <header id="page_header">
+                    @include('partials.nav')
+                </header>
+            </div>
+            <div class="col-lg-4"></div>
+        </div>
+        <div class="row">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-6">
 
-        <section id="page_content">
-            <main id="main_content">
-                    @yield('content')
-            </main>
-
-            <aside id="sidebar">
-                @include('partials.sidebar')
-            </aside>
-        </section>
-
-        <footer id="page_footer">
-            @include('partials.footer')
-        </footer>
-    </div>
+                <section id="page_content">
+                    <main id="main_content">
+                            @yield('content')
+                    </main>
+                </section>
+            </div><!-- end col-lg-6 -->
+            
+            <div class="col-lg-2">
+                <aside id="sidebar">
+                    @include('partials.sidebar')
+                </aside>
+            </div><!-- end col-lg-2 -->
+            <div class="col-lg-2"></div>
+        </div> <!-- end row -->
+        
+        <div class="row">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-6">
+                <footer id="page_footer">
+                        @include('partials.footer')
+                </footer>                
+            </div>
+            <div class="col-lg-4"></div>
+        </div>
+        
+    </div> <!-- end Container -->
     <script src="{{url('assets/js/app.min.js')}}" ></script>
 </body>
 </html>

@@ -86,16 +86,26 @@ OK - configuration des et gestion des assets
 v  ° Preparation des dossier SASS
 v  ° Faire le choix des librairie JS à utiliser 
 
+
 Etape 5
 --------------------------------------
-- inserer les JS et les CSS automatiquement avec GULP
+OK - inserer les JS et les CSS automatiquement avec GULP
+- Boser la grille Bootstrap
+- Faire l'arch du site : Nav/sidebar/footer
+- faire la fonction de pagination
+- faire le CSS pour les article en page d'accueil 
+- faire le CSS pour les article seul 
+- faire les evenement JQuery JS pour les article en page d'accueil
+
+
+
+Etape 6
+--------------------------------------
 - gerer les utilisateur qui peuvent publier un contenu
 - Mettre en place les bonne pratique vue en cours
   ° Gerer les 404
   ° Utiliser les service provider
 - revoir le scripte install.sh
-
-
 
 
 

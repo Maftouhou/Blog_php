@@ -1,7 +1,6 @@
 @extends('layouts.master')
 
 @section('content')
-    <p>This is the most recent content </p>
     @forelse($posts as $post)
         <h1><a href="{{url('article', $post->id)}}">{{$post->title}}</a></h1>
 

@@ -22,7 +22,7 @@ class FrontController extends Controller
      * @return function : the view that display the datas
      */
     public function index(){
-        $pageNum = 1000;
+        $pageNum = 10;
         $posts = Post::with('category', 'user', 'picture', 'tags')->paginate($pageNum);
         $postTitle = 'Liste des post';
         $picture = Picture::all();

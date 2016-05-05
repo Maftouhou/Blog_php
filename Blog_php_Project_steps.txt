@@ -89,15 +89,29 @@ v  ° Faire le choix des librairie JS à utiliser
 
 Etape 5
 --------------------------------------
-OK - inserer les JS et les CSS automatiquement avec GULP
-- Boser la grille Bootstrap
-- Faire l'arch du site : Nav/sidebar/footer
-- faire la fonction de pagination
+NA - inserer les JS et les CSS automatiquement avec GULP
+OK - Boser la grille Bootstrap
+ok - Faire l'arch du site : Nav/sidebar/footer
+
+OK - mettre une autre en dessus du contenu 
+OK - Mettre le text des bouton en gras 
+OK - changer la couleur du font du bouton dashbord
+OK - nettoyer le text inutile 
+OK - faire desendre le sidebar un peut plus bas et mettre un trait 
+OK - augmenter un toisieme text sur le footer
+OK - Formater les categorie 
+OK - mettre des donnée d'exemple sur l'article à la une
+
+OK - faire la fonction de pagination
 - faire le CSS pour les article en page d'accueil 
 - faire le CSS pour les article seul 
 - faire les evenement JQuery JS pour les article en page d'accueil
 
 
+Etape 5bis
+--------------------------------------
+- Formater les formulaire 
+- Definir les regle de formatage du dashbord
 
 Etape 6
 --------------------------------------

@@ -12,6 +12,7 @@ header#page_header{
     nav{
         margin: 25px 0 10px 0;
         ul{
+            font-weight: bold;
             display: inline;
             li{
                 display: inline;
@@ -21,7 +22,12 @@ header#page_header{
                 a {
                     padding: 10px;
                     background-color: red;
+                    border: 2px solid white;
                     color: white;
+                    
+                    &#dashbord{
+                        background-color: #3FBFBF;
+                    }
                 }
             }
             &#navigation{
@@ -39,6 +45,7 @@ header#page_header{
 section#page_content{
     position: relative;
     top: 30px;
+    border-top: 1px solid red;
     
     main#main_content{
         
@@ -57,26 +64,51 @@ footer#page_footer{
         li{
             display: inline;
             padding: 5px;
+            border-right: 1px solid red;
             
-            &:first-child{
-                border-right: 1px solid red;
+            &:last-child{
+                border-right: 0;
             }
         }
     }
 }
 
 aside#sidebar{
-    ul#category{
-        li{
-            color: red;
-            
-            &:hover{
-                color: blue;
+    position: relative;
+    top: 30px;
+    border-top: 1px solid red;
+    padding-top: 20px;
+    
+    ul{
+        list-style: none;
+        margin: 0 0 25px 25px;
+        
+        &#category{
+            text-transform: uppercase;
+            li{
+                line-height: 25px;
+                &:before{
+                    content: '';
+                    padding: 2px;
+                    background-color: red;
+                    border-right: 5px solid white;
+                }
+                color: red;
+
+                &:hover{
+                    color: blue;
+                }
             }
         }
-    }
-    
-    ul#la_une li{
-        
+
+        &#la_une li{
+            figure{
+                #image_la_une{
+                    padding: 20px;
+                    background-color: #EB79EB;
+                    margin-bottom: 15px;
+                }
+            }
+        }
     }
 }

@@ -7,7 +7,7 @@
             <legend>Editer l'article</legend>
             
             <p>Creer un nouvel article </p>
-            <input type="hidden" name="user_id" value="{{$userId}}" />
+                <input type="hidden" name="user_id" value="{{$userId}}" />
             <p>Titre de l'article <br>
                 <input type="text" name="title" placeholder="Titre de l'Article">
             </p>
@@ -46,9 +46,11 @@
             </p>
             <p>Selectionner une des mots clé <br>
                 <select name="tag_id[]" id="" multiple>
+                    {{$odd = 0}}
                     @forelse($tags as $tag_id => $tag_value)
+                        {{$odd ++}}
                         @if(!is_null($tag_value))
-                            <option value="{{$tag_id}}">{{$tag_value}}</option>
+                            <option value="{{$tag_id}}" class="{{$odd%2==0?'even':'odd'}}" >{{$tag_value}}</option>
                         @else
 
                         @endif
@@ -57,9 +59,9 @@
                     @endforelse
                 </select>
             </p>
+            <p>
+                <input type="submit" value="Envoyer">
+            </p>
         </fieldset>
-        <p>
-            <input type="submit" value="Envoyer">
-        </p>
     </form>
 @endsection

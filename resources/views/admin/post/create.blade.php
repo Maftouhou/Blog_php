@@ -22,7 +22,8 @@
 
         <fieldset>
             <legend>Selectionner les options</legend>
-            <p>Status de l'article <br>
+            <p>Status de l'article </p>
+            <p>
                 <label for="draft">draft</label>
                 <input type="radio" id="draft" name="status" value="draft"><br>
                 <label for="online">online</label>

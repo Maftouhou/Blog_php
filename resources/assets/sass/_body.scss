@@ -165,57 +165,52 @@ section#page_content{
             p{
                 margin: 15px;
                 
-                input[type="text"]{
-                    width: 245px;
-                    height: 40px;
-                    border: 0;
-                    background-color: #F3F3F3 !important;
-                    padding-left: 7px;
-                }
-                
-                input[type="password"]{
-                    width: 245px;
-                    height: 40px;
-                    border: 0;
-                    background-color: #F3F3F3 !important;
-                    padding-left: 7px;
-                }
-                
-                input[type="submit"]{
-                    padding: 10px 20px;
-                    background-color: #272727;
-                    color: #ffffff;
-                    border: 0;
-                }
-                
-                select[name="category_id"]{
-                    width: 165px;
-                    height: 31px;
-                    background-color: #E2E2E2;
-                    color: black;
-                    font-size: 16px;
-                    border: 0;
-                }
-                select[name="tag_id[]"]{
-                    width: 165px;
-                    background-color: #E2E2E2;
-                    color: black;
-                    font-size: 16px;
-                    border: 1px solid gray;
+                input{
+                    &[type="text"], &[type="password"]{
+                        width: 245px;
+                        height: 40px;
+                        border: 0;
+                        background-color: #F3F3F3 !important;
+                        padding-left: 7px;
+                    }
                     
-                    option{
-                        &:nth-child(even){
-                            background-color: #CCDFFF;
-                        }
-                        
-                        &:nth-child(odd){
-                            background-color: white;
+                    &[type="submit"]{
+                        padding: 10px 20px;
+                        background-color: #272727;
+                        color: #ffffff;
+                        border: 0;
+                    }
+                } 
+                
+                select{
+                    width: 165px;
+                    background-color: #E2E2E2;
+                    color: black;
+                    font-size: 16px;
+                    
+                    &[name="category_id"]{
+                        height: 31px;
+                        border: 0;
+                    }
+                    
+                    &[name="tag_id[]"]{
+                        border: 1px solid gray;
+                    
+                        option{
+                            &:nth-child(even){
+                                background-color: #CCDFFF;
+                            }
+
+                            &:nth-child(odd){
+                                background-color: white;
+                            }
                         }
                     }
                 }
             }
         }
     }
+    
     .category_page{
         margin-top: 70px;
     }

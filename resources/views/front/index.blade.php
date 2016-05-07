@@ -21,7 +21,7 @@
         @endif
             <figcaption>
                 <p class="article_content">{{str_limit($post->content, 70)}}<br>
-                    <span class="read_more"><a href="{{url('article', $post->id)}}">Lire la suite</a></span>
+                    <a href="{{url('article', $post->id)}}"><span class="read_more">Lire la suite</span></a>
                 </p>
                 <p class="meta_data"><span class="meta_data_date">Published on {{$post->created_at}}</span>
                     @if(!is_null($post->user))

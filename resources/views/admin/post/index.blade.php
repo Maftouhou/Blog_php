@@ -2,6 +2,10 @@
 
 @section('content')
 <div class="panel">
+    <p class="action_response {{session('class')}}">
+        {{session('message')}}
+        <span></span>
+    </p>
     <ul>
         <li><a href="{{url('post/create')}}">Create</a></li>
     </ul>
@@ -26,7 +30,7 @@
         <?php $odd++; ?>
         <tbody>
             <tr class="{{$odd%2==0?'evenClass':'oddClass'}}">
-                <td><a href="{{url('post', $post->id)}}">{{$post->title}}</a></td>
+                <td><a href="{{url('post', $post->id)}}">{{str_limit($post->title, 7)}}</a></td>
                 <td><b><em>
                     @if($post->user) {{$post->user->name}}
                     @else pas d'auteur

@@ -169,7 +169,7 @@ section#page_content{
         }
         
         div.panel{
-            height: 36px;
+            min-height: 36px;
             border-bottom: 5px solid #3FBFBF;
             margin: 0 0 12px 0;
             
@@ -187,6 +187,10 @@ section#page_content{
                     }
                 }
             }
+        }
+        
+        p.action_response{
+            
         }
         
         table.article_list{
@@ -359,3 +363,40 @@ aside#sidebar{
     }
 }
 
+.ErrorMssgClass{
+    padding: 5px;
+    border: 1px solid red;
+    margin-top: 2px;
+    border-radius: 6px;
+    color: red;
+    background-color: #FFEEEE;
+    
+    span{
+        background-color: red;
+        content: 'X';
+        border: 1px solid #fff;
+        border-radius: 20px;
+        padding: 9px;
+        float: right;
+        cursor: pointer;
+    }
+}
+
+.SuccessMssgClass{
+    padding: 5px;
+    border: 1px solid #007FC5;
+    margin-top: 2px;
+    border-radius: 6px;
+    color: #007FC5;
+    background-color: #E4F6FF;
+    
+    span{
+        background-color: #007FC5;
+        content: 'X';
+        border: 1px solid #fff;
+        border-radius: 20px;
+        padding: 9px;
+        float: right;
+        cursor: pointer;
+    }
+}

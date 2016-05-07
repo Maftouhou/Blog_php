@@ -105,7 +105,7 @@ OK - mettre des donnée d'exemple sur l'article à la une
 OK - faire la fonction de pagination
 OK - ramener le design sur la page des categorie
 OK - faire le CSS pour les article en page d'accueil 
-- faire le CSS pour les article seul 
+OK - faire le CSS pour les article seul 
 - faire les evenement JQuery JS pour les article en page d'accueil
 
 
@@ -120,7 +120,12 @@ OK - Definir les regle de formatage du dashbord
 
 Etape 6
 --------------------------------------
-- gerer les utilisateur qui peuvent publier un contenu
+OK - gerer les utilisateur qui peuvent publier un contenu
+
+- Faire un class succes et erreur pour les mssg
+- faire un bouton de fermeture du message
+- Gerer les autre message secces ou erreur pour les autre action
+
 - Mettre en place les bonne pratique vue en cours
   ° Gerer les 404
   ° Utiliser les service provider

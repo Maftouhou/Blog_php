@@ -72,9 +72,9 @@
                     @endforelse
                 </select>
             </p>
+            <p>
+                <input type="submit" value="Envoyer">
+            </p>
         </fieldset>
-        <p>
-            <input type="submit" value="Envoyer">
-        </p>
     </form>
 @endsection

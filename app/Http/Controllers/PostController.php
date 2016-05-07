@@ -52,12 +52,23 @@ class PostController extends Controller
      */
     public function create()
     {
-//        $categories = Category::lists('title', 'id');
-        $categories = Category::all();
-        $tags = Tag::lists('name', 'id');
-        $userId = Auth::user()->id;
+        if (Auth::user()->role === 'admin') {
+            
+            $categories = Category::all();
+            $tags = Tag::lists('name', 'id');
+            $userId = Auth::user()->id;
+            
+            $reposne = 'L\'article a été enregistrer correctement';
+            $reposneClass = 'SuccessMssgClass';
+
+            return view('admin.post.create', compact('categories', 'tags', 'userId'))->with(['message' => sprintf($reposne), 'class' => $reposneClass]);
+        }
         
-        return view('admin.post.create', compact('categories', 'tags', 'userId'));
+        $reposne = Auth::user()->name.', entant qu\''.Auth::user()->role.', '
+                . 'Vous n\'avez pas les autorisation suffisant pour faire une publication';
+        $reposneClass = 'ErrorMssgClass';
+        
+        return redirect('post')->with(['message' => sprintf($reposne), 'class' => $reposneClass]);
     }
 
     /**
@@ -68,21 +79,29 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $post = Post::create($request->all());
-        
-        if (!is_null($request->input('tag_id'))) {
-            $post->tags()->attach($request->input('tag_id'));
+        if (Auth::user()->role === 'admin') {
+            
+            $post = Post::create($request->all());
+
+            if (!is_null($request->input('tag_id'))) {
+                $post->tags()->attach($request->input('tag_id'));
+            }
+
+            $im = $request->file('picture');
+
+            // Inspiré de la connection
+            if (!is_null($im)) {
+                $this->upload($im, $post->id);
+            }
+            $content = 'Article créer avec succès';
+
+            return redirect('post')->with('message', sprintf($content));
         }
-               
-        $im = $request->file('picture');
-//        dd($im);
         
-        // refactoring voir plus bas la méthode private upload
-        if (!is_null($im)) {
-            $this->upload($im, $post->id);
-        }
+        $haltMessage = 'violation d\'accès. Aucune sauvegarde ne peut etre effectué';
+        $errorClass = 'ErrorMssgClass';
         
-        return redirect('post')->with('message', 'success');
+        return redirect('post')->with(['message' => sprintf($haltMessage), 'class' => $errorClass]);
     }
     
     /**
@@ -108,15 +127,23 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        $post = Post::find($id);
-        $userId = Auth::user()->id;
-        $categories = Category::all();
-        $tags = Tag::lists('name', 'id');
+        if (Auth::user()->role === 'admin') {
+            
+            $post = Post::find($id);
+            $userId = Auth::user()->id;
+            $categories = Category::all();
+            $tags = Tag::lists('name', 'id');
+
+            $curentDate = Carbon\Carbon::now();
+
+            return view('admin.post.edit', compact('post', 'userId', 'categories', 'tags', 'curentDate'));
+        }
         
-        $curentDate = Carbon\Carbon::now();
+        $reposne = Auth::user()->name.', entant qu\''.Auth::user()->role.', '
+                . 'Vous n\'avez pas les autorisation suffisant pour Modifier un article';
+        $reposneClass = 'ErrorMssgClass';
         
-//        return $mytime;
-        return view('admin.post.edit', compact('post', 'userId', 'categories', 'tags', 'curentDate'));
+        return redirect('post')->with(['message' => sprintf($reposne), 'class' => $reposneClass]);
     }
 
     /**
@@ -128,29 +155,37 @@ class PostController extends Controller
     */
     public function update(Request $request, $id)
     {
-        $post = Post::findOrFail($id);
-        
-//        dd($post, $request);
-        $post->update($request->all());
-        
-        if (!is_null($request->input('tag_id'))) {
-            $post->tags()->sync($request->input('tag_id'));
+        if (Auth::user()->role === 'admin') {
+            $post = Post::findOrFail($id);
+
+            $post->update($request->all());
+
+            if (!is_null($request->input('tag_id'))) {
+                $post->tags()->sync($request->input('tag_id'));
+            }
+
+            $image = $request->file('picture');
+
+            if ($request->input('delete_picture')) {
+                $this->deletePicture($post);
+                $message[] = 'success delete image';
+            }
+
+            if (!is_null($image)) {
+                $this->deletePicture($post);
+                $this->upload($image, $post->id);
+                $message[] = 'success upload image';
+            }
+            $reposne = 'Article mit a jour avec succès';
+            $reposneClass = 'SuccessMssgClass';
+            
+            return redirect('post')->with(['message' => sprintf($reposne), 'class' => $reposneClass]);
         }
         
-        $image = $request->file('picture');
+        $haltMessage = 'violation d\'accès. Aucune sauvegarde ne peut etre effectué';
+        $errorClass = 'ErrorMssgClass';
         
-        if ($request->input('delete_picture')) {
-            $this->deletePicture($post);
-            $message[] = 'success delete image';
-        }
-        
-        if (!is_null($image)) {
-            $this->deletePicture($post);
-            $this->upload($image, $post->id);
-            $message[] = 'success upload image';
-        }
-        
-        return redirect('post');
+        return redirect('post')->with(['message' => sprintf($haltMessage), 'class' => $errorClass]);
     }
     
     /**
@@ -161,12 +196,24 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        $post = Post::findOrFail($id);
-        $postTitle = $post->title;
+        if (Auth::user()->role === 'admin') {
+            
+            $post = Post::findOrFail($id);
+            $postTitle = $post->title;
+
+            $post->delete();
+            
+            $reposne = 'L\'article '.$postTitle.' est supprimé avec succès';
+            $reposneClass = 'SuccessMssgClass';
+
+            return redirect('post')->with(['message' => sprintf($reposne), 'class' => $reposneClass]);
+        }
         
-        $post->delete();
+        $reposne = Auth::user()->name.', entant qu\''.Auth::user()->role.', '
+                . 'Vous n\'avez pas les autorisations suffisant pour supprimer un article';
+        $reposneClass = 'ErrorMssgClass';
         
-        return redirect('post')->with(['message' => sprintf('You have delete the post%s', $postTitle)]);
+        return redirect('post')->with(['message' => sprintf($reposne), 'class' => $reposneClass]);
     }
     
     private function deletePicture(Post $post)
@@ -183,7 +230,7 @@ class PostController extends Controller
     }
     
     
-        private function upload($img, $postId)
+    private function upload($img, $postId)
     {
         $image_extention = $img->getClientOriginalExtension();
         $image_base_name = Auth::user()->id.'_'.time();
@@ -199,6 +246,7 @@ class PostController extends Controller
         
         // exception levé par le framework si pb
         $img->move(env('UPLOAD_PICTURES', 'uploads'), $uri);
+        
         return true;
     }
 }

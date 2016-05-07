@@ -11,7 +11,9 @@
         <h2><a href="{{url('article', $post->id)}}">{{$post->title}}</a></h2>
         @if(!is_null($post->picture))
         <figure id="{{$post->picture->id}}">
-            <a href="{{url('article', $post->id)}}"><img src="{{url('uploads', $post->picture->uri)}}"></a>
+            <a href="{{url('article', $post->id)}}">
+                <img src="{{url('uploads', $post->picture->uri)}}">
+            </a>
             <div class="vote_banner">
                 <span>voter ici</span><br>
                 <a href="#" class="vote_banner_marker">&starf;</a><br>

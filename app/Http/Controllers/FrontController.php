@@ -46,7 +46,8 @@ class FrontController extends Controller
     }
     
     public function showPostDyCategory($id){
-        $category = Category::findOrFail($id);
+        
+        $category = Category::find($id);
         $categories = Category::all();
         $posts = $category->posts()->get();
         

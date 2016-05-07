@@ -103,15 +103,20 @@ OK - Formater les categorie
 OK - mettre des donnée d'exemple sur l'article à la une
 
 OK - faire la fonction de pagination
-- faire le CSS pour les article en page d'accueil 
+OK - ramener le design sur la page des categorie
+OK - faire le CSS pour les article en page d'accueil 
 - faire le CSS pour les article seul 
 - faire les evenement JQuery JS pour les article en page d'accueil
 
 
 Etape 5bis
 --------------------------------------
-- Formater les formulaire 
-- Definir les regle de formatage du dashbord
+OK - Formater les formulaire 
+OK - Definir les regle de formatage du dashbord
+  ° Faire un mini menu pour la creation des formulaire
+  ° mettre des separateur sur les colones
+  ° mettre des icone pour la suppression et l'edition
+  ° faire le Odd/Even du resultat
 
 Etape 6
 --------------------------------------

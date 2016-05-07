@@ -47,9 +47,9 @@
             </p>
             <p>Selectionner une des mots clé <br>
                 <select name="tag_id[]" id="" multiple>
-                    {{$odd = 0}}
+                    <?php $odd = 0; ?>
                     @forelse($tags as $tag_id => $tag_value)
-                        {{$odd ++}}
+                        <?php $odd++; ?>
                         @if(!is_null($tag_value))
                             <option value="{{$tag_id}}" class="{{$odd%2==0?'even':'odd'}}" >{{$tag_value}}</option>
                         @else

@@ -1,19 +1,30 @@
 @extends('layouts.master')
 
 @section('content')
-    <p>This is One selected article</p>
 
+<article class="article_wrapper single_post">
     <h1>{{$post->title}}</h1>
-    <p>{{$post->content}}</p>
-    @if(!is_null($post->picture))
-        <p id="{{$post->picture->id}}"><img src="{{url('uploads', $post->picture->uri)}}"></p>
-    @else
-    @endif
-    <span>Published on {{$post->created_at}}
-    @if(!is_null($post->user))
-        by <b><em><span><a href="#">{{$post->user->name}}</a></span></em></b>
-    @else
-    @endif
-    </span>
-    <hr>
+
+    <figure id="{{$post->id}}">
+
+        @if(!is_null($post->picture))
+            <img class="simgle_image" src="{{url('uploads', $post->picture->uri)}}">
+        @else <p>Pas de photo associé</p>
+        @endif
+
+        <figcaption>
+            <p class="meta_data">
+                @if(!is_null($post->user))
+                By <span class="meta_data_user">{{$post->user->name}}</span>
+                @else
+                @endif
+                <span class="meta_data_date"> on {{$post->created_at}}</span>
+            </p>
+            <p class="article_content">
+                {{$post->content}}
+            </p>
+        </figcaption>
+    </figure>
+</article>
+
 @endsection

@@ -49,11 +49,14 @@ section#page_content{
     
     main{
         article{
-            width: 295px;
-            border: 1px solid #8888DC;
+            width: 292px;
             min-height: 300px;
-            margin: 0 0 20px 0;
+            margin: 0 0 16px 0;
             display: inline-block;
+            
+            &.single_post{
+                width: auto !important;
+            }
             
             h2{
                 background-color: rgba(0, 0, 0, 0.5);
@@ -81,10 +84,15 @@ section#page_content{
                 position: relative;
                 img{
                     width: 230px;
+                    
+                    &.simgle_image{
+                        width: auto !important;
+                        max-width: 370px !important;
+                    }
                 }
                 
                 div.vote_banner{
-                    width: 63px;
+                    width: 60px;
                     height: 87px;
                     background-color: #D42500;
                     display: inline;
@@ -154,6 +162,79 @@ section#page_content{
                     
                     .meta_data_user{
                         font-style: italic;
+                    }
+                }
+            }
+        }
+        
+        div.panel{
+            height: 36px;
+            border-bottom: 5px solid #3FBFBF;
+            margin: 0 0 12px 0;
+            
+            ul{
+                margin: 10px 0;
+                
+                li{
+                    font-size: 15px;
+                    padding: 5px;
+                    border: 1px solid #3FBFBF;
+                    display: inline;
+                    
+                    &:hover{
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+        
+        table.article_list{
+            min-width: 660px;
+            
+            thead > tr > td{
+                font-size: 12px;
+                font-weight: bold;
+            }
+            
+            tbody > tr {
+                &.oddClass{
+                    background-color: #E9F4FF;
+                }
+                &.evenClass{
+                    background-color: white;
+                }
+                
+                td{
+                    font-size: 12px;
+                    border-right: 1px solid gray;
+                    padding: 0 3px;
+
+                    &:last-child{
+                        border-right: 0;
+                    }
+                    
+                    a.edit_post{
+                        border-radius: 30px;
+                        color: #0087FF;
+                        font-size: 25px;
+                        
+                        &:hover{
+                            text-decoration: none;
+                        }
+                    }
+                    
+                    form#delete_post{
+                        
+                        input[type="submit"]{
+                            height: 25px;
+                            border: 0;
+                            border-radius: 20px;
+                            background: none;
+                            font-size: 25px;
+                            line-height: 0px;
+                            color: #FF287F;
+                            float: right;
+                        }
                     }
                 }
             }

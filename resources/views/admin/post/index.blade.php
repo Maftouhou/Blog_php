@@ -1,13 +1,13 @@
 @extends('layouts.master')
 
 @section('content')
-<div id="panel">
+<div class="panel">
     <ul>
         <li><a href="{{url('post/create')}}">Create</a></li>
     </ul>
 </div>
-<div id="core">
-    <table>
+<div class="core">
+    <table class="article_list">
         <thead>
             <tr>
                 <td>Titre</td>
@@ -21,10 +21,11 @@
                 <td>Suprimer</td>
             </tr>
         </thead>
+        <?php $odd = 0; ?>
         @forelse($posts as $post)
-            
+        <?php $odd++; ?>
         <tbody>
-            <tr>
+            <tr class="{{$odd%2==0?'evenClass':'oddClass'}}">
                 <td><a href="{{url('post', $post->id)}}">{{$post->title}}</a></td>
                 <td><b><em>
                     @if($post->user) {{$post->user->name}}
@@ -32,7 +33,7 @@
                     @endif
                 </em></b></td>
                 <td>{{$post->status}}</td>
-                <td>{{$post->created_at}}</td>
+                <td>{{$post->created_at->format('d-m-Y')}}</td>
                 <td>
                     @if($post->category) {{$post->category->title}}
                     @else pas de category
@@ -45,17 +46,16 @@
                         @endif
                     @empty Pas de tag
                     @endforelse
-                    <?php #var_dump($post->tags) ?>
                 </td>
-                <td>{{$post->updated_at}}</td>
+                <td>{{$post->updated_at->format('d-m-Y')}}</td>
                 <td>
-                    <a href="{{url('post/'.$post->id.'/edit')}}" class="">Editer</a>
+                    <a class="edit_post" href="{{url('post/'.$post->id.'/edit')}}" class="">&ocir;</a>
                 </td>
                 <td>
-                    <form action="{{url('post', $post->id)}}" method="POST">
+                    <form id="delete_post" action="{{url('post', $post->id)}}" method="POST">
                         {{method_field('DELETE')}}
                         {{csrf_field()}}
-                        <input type="submit" value="delete">
+                        <input type="submit" value="&xotime;">
                     </form>
                 </td>
             </tr>

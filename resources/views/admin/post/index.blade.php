@@ -22,7 +22,7 @@
             </tr>
         </thead>
         <?php $odd = 0; ?>
-        @forelse($posts as $post)
+        @forelse($posts->reverse() as $post)
         <?php $odd++; ?>
         <tbody>
             <tr class="{{$odd%2==0?'evenClass':'oddClass'}}">

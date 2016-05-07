@@ -6,7 +6,7 @@
     <div class="page_pagination">
         {{$posts->links()}}
     </div>
-    @forelse($posts as $post)
+    @forelse($posts->reverse() as $post)
     <article class="article_wrapper">
         <h2><a href="{{url('article', $post->id)}}">{{$post->title}}</a></h2>
         @if(!is_null($post->picture))

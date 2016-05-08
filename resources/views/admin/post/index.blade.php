@@ -7,7 +7,7 @@
         <span></span>
     </p>
     <ul>
-        <li><a href="{{url('post/create')}}">Create</a></li>
+        <li><a href="{{url('post/create')}}">Create a post</a></li>
     </ul>
 </div>
 <div class="core">
@@ -56,11 +56,16 @@
                     <a class="edit_post" href="{{url('post/'.$post->id.'/edit')}}" class="">&ocir;</a>
                 </td>
                 <td>
-                    <form id="delete_post" action="{{url('post', $post->id)}}" method="POST">
-                        {{method_field('DELETE')}}
-                        {{csrf_field()}}
-                        <input type="submit" value="&xotime;">
-                    </form>
+                    <button class="delete_post_request"></button>
+                    <div class="delete_post_confirmation">
+                        <p>Etes vous sûr de vouloir supprimer l'article : {{$post->title}}</p>
+                        <form class="delete_post" action="{{url('post', $post->id)}}" method="POST">
+                            {{method_field('DELETE')}}
+                            {{csrf_field()}}
+                            <input class="canncel_delete" type="reset" value="Annuler">
+                            <input type="submit" value="virer-le">
+                        </form>
+                    </div>
                 </td>
             </tr>
         </tbody>

@@ -30,9 +30,12 @@ class LoginController extends Controller
             ]);
             
             $credencials = $request->only('name', 'password');
-            if (Auth::attempt($credencials) /*&& Auth::usesr()->role == 'Admin'*/) {
+            if (Auth::attempt($credencials)) {
                 
-                return redirect('post')->with(['message' => 'Success']);
+                $reponse = 'Bonjour '.Auth::user()->name;
+                $errorClass = 'SuccessMssgClass';
+                
+                return redirect('post')->with(['message' => sprintf($reponse), 'class' => $errorClass]);
             }else{
                 
                 return back()->withInput($request->only('login'))->with(['message' => 'Authentification faild']);

@@ -106,7 +106,9 @@ OK - faire la fonction de pagination
 OK - ramener le design sur la page des categorie
 OK - faire le CSS pour les article en page d'accueil 
 OK - faire le CSS pour les article seul 
-- faire les evenement JQuery JS pour les article en page d'accueil
+OK - faire les evenement JQuery JS pour les article en page d'accueil
+  ° Faire un bouton de fermeture du message 
+  ° Mettre un message d'alert pour la suppression des articles
 
 
 Etape 5bis
@@ -122,9 +124,9 @@ Etape 6
 --------------------------------------
 OK - gerer les utilisateur qui peuvent publier un contenu
 
-- Faire un class succes et erreur pour les mssg
-- faire un bouton de fermeture du message
-- Gerer les autre message secces ou erreur pour les autre action
+OK - Faire un class succes et erreur pour les mssg
+OK - faire un bouton de fermeture du message
+OK - Gerer les autre message secces ou erreur pour les autre action
 
 - Mettre en place les bonne pratique vue en cours
   ° Gerer les 404

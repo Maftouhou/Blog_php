@@ -38,7 +38,7 @@ class FrontController extends Controller
      * @return function : the view that display the post
      */
     public function show($id){
-        $post = Post::find($id);
+        $post = Post::findOrFail($id);
         
         $categories = Category::all();
         

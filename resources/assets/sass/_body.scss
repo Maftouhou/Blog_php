@@ -331,6 +331,24 @@ section#page_content{
     .category_page{
         margin-top: 70px;
     }
+    
+    .error_page{
+        .error_container {
+            text-align: center;
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+        .error_content {
+            text-align: center;
+            display: inline-block;
+        }
+
+        .error_title {
+            font-size: 72px;
+            margin-bottom: 40px;
+        }
+    }
 }
 
 footer#page_footer{

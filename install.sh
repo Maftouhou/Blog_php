@@ -31,4 +31,7 @@ if [ ! -f gulpfile.js ]; then
 	touch gulpfile.js
 fi
 
+# deploiement des migrations avec injection des donnée d'exemple 
+php artisan migrate:refresh --seed
+
 echo 'Tout est bon';

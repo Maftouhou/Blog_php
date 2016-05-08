@@ -116,7 +116,7 @@ class PostController extends Controller
         
         $categories = Category::all();
         
-        return $post;
+        return view('front.show', compact('post', 'categories'));
     }
 
     /**

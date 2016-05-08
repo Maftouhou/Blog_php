@@ -128,11 +128,15 @@ OK - Faire un class succes et erreur pour les mssg
 OK - faire un bouton de fermeture du message
 OK - Gerer les autre message secces ou erreur pour les autre action
 
-- Mettre en place les bonne pratique vue en cours
+OK - Mettre en place les bonne pratique vue en cours
   ° Gerer les 404
-  ° Utiliser les service provider
+- Utiliser les service provider
 - revoir le scripte install.sh
-
+  ° Creation de la base de donnee
+  ° installation des dependances GUlp
+  ° Creation du fichier Gulp
+  ° deploiement des migrations
+  ° injection des donnée d'exemple 
 
 
 

@@ -25,6 +25,31 @@ use App\Http\Requests\PostRequest;
 
 class PostController extends Controller
 {
+
+    /**
+     * Return array of notification messages. 
+     */
+    public function NotificationMessage()
+    {
+
+        $NotificationMessageArray = array(
+
+                'success'   => array(
+                        'create'    => 'L\'article a été enregistrer correctement',
+                        'store'     => 'Article créer avec succès',
+                        'update'    => 'Article mit a jour avec succès',
+                        'destroy'   => 'L\'article '.$postTitle.' est supprimé avec succès'
+                    ),
+
+                'failure'   => array(
+                        'create'    => '',
+                        'store'     => '',
+                        'update'    => '',
+                        'destroy'   => ''
+                    )
+            );
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -34,7 +59,7 @@ class PostController extends Controller
     {
         if (Auth::user()) {
             
-            $posts = Post::all();
+            $posts      = Post::all();
             
             $categories = Category::all();
 
@@ -52,22 +77,23 @@ class PostController extends Controller
      */
     public function create()
     {
+
         if (Auth::user()->role === 'admin') {
             
-            $categories = Category::all();
-            $tags = Tag::lists('name', 'id');
-            $userId = Auth::user()->id;
+            $categories     = Category::all();
+            $tags           = Tag::lists('name', 'id');
+            $userId         = Auth::user()->id;
             
-            $reposne = 'L\'article a été enregistrer correctement';
-            $reposneClass = 'SuccessMssgClass';
+            $reposne        = 'L\'article a été enregistrer correctement';
+            $reposneClass   = 'SuccessMssgClass';
 
             return view('admin.post.create', compact('categories', 'tags', 'userId'))->with(['message' => sprintf($reposne), 'class' => $reposneClass]);
         }
-        
+            
         $reposne = Auth::user()->name.', entant qu\''.Auth::user()->role.', '
                 . 'Vous n\'avez pas les autorisation suffisant pour faire une publication';
         $reposneClass = 'ErrorMssgClass';
-        
+
         return redirect('post')->with(['message' => sprintf($reposne), 'class' => $reposneClass]);
     }
 

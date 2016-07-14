@@ -1,6 +1,10 @@
 @extends('layouts.master')
 
 @section('content')
+    <p class="action_response {{session('class')}}">
+        {{session('message')}}
+        <span></span>
+    </p>
     <form id="login_request" action="{{url(('login'))}}" method="POST">
         {{csrf_field()}}
         <fieldset>

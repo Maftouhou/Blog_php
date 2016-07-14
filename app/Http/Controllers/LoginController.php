@@ -33,12 +33,17 @@ class LoginController extends Controller
             if (Auth::attempt($credencials)) {
                 
                 $reponse = 'Bonjour '.Auth::user()->name;
-                $errorClass = 'SuccessMssgClass';
+                $successClass = 'SuccessMssgClass';
                 
-                return redirect('post')->with(['message' => sprintf($reponse), 'class' => $errorClass]);
+                return redirect('post')->with(['message' => sprintf($reponse), 'class' => $successClass]);
             }else{
-                
-                return back()->withInput($request->only('login'))->with(['message' => 'Authentification faild']);
+                $reponse = 'Login ou mot de passe incorect';
+                $errorClass = 'ErrorMssgClass';
+                return back()->withInput($request->only('login'))
+                             ->with([
+                                 'message'  => sprintf($reponse), 
+                                 'class'    => $errorClass
+                            ]);
             }
             
         }else{

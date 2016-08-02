@@ -30,11 +30,13 @@ class LoginController extends Controller
             ]);
             
             $credencials = $request->only('name', 'password');
+            
+
             if (Auth::attempt($credencials)) {
                 
                 $reponse = 'Bonjour '.Auth::user()->name;
                 $successClass = 'SuccessMssgClass';
-                
+            
                 return redirect('post')->with(['message' => sprintf($reponse), 'class' => $successClass]);
             }else{
                 $reponse = 'Login ou mot de passe incorect';

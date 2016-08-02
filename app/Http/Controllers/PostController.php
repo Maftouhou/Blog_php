@@ -119,9 +119,11 @@ class PostController extends Controller
             if (!is_null($im)) {
                 $this->upload($im, $post->id);
             }
-            $content = 'Article créer avec succès';
 
-            return redirect('post')->with('message', sprintf($content));
+            $contentMssg    = 'Article créer avec succès '.$post->id;
+            $reposneClass   = 'SuccessMssgClass';
+
+            return redirect('post')->with(['message' => sprintf($contentMssg), 'class' => $reposneClass]);
         }
         
         $haltMessage = 'violation d\'accès. Aucune sauvegarde ne peut etre effectué';

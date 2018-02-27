@@ -4,4 +4,6 @@
 Homestead.yaml
 Homestead.json
 /nbproject/private/
+composer.lock
+.env
 
